@@ -1,21 +1,22 @@
 ---
-title: Sign in to MessegusO
-linkText: Create account
-stylesheets:
-  - ./form.css
-  - ./main.css
-  - ./link.css
-  - ./button.css
+title: Sign in
+css:
+  - form.css
+  - button.css
+  - link.css
+  - main.css
 ---
-{{!< base}}
+
+{{!< main}}
 
 <main>
-    <form class="form__wrapper">
-        <h4 class="form__title">{{title}}</h4>
-        <input id="login" class="form__input" placeholder="login"></input>
-        <input id="password" type="password" class="form__input" placeholder="password"></input>
-        {{> link href="./register.hbs" linkText="Create account"}}
-        {{> link href="./messanger.hbs" linkText="messanger"}}
-        {{> button title="Sign in"}}
-    </form>
+  <form class="form">
+    <h2 class="form__title">{{title}}</h2>
+    <input id="login" class="form__input" placeholder="login" />
+    <input id="password" class="form__input" placeholder="password" />
+    <div class="form__button">
+      {{> button type="submit" title="Sign in" href="./main.hbs"}}
+    </div>
+    {{> link href="./signUp.hbs" linkText="Create account"}}
+  </form>
 </main>

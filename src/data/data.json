@@ -1,0 +1,18 @@
+{
+  "dialogues": [
+    {
+      "avatar": "../images/img_avatar2.png",
+      "text": "don't worry, will fix it sometimes later"
+    }
+  ],
+  "messages": [
+    {
+      "avatar": "../images/img_avatar.png",
+      "text": "hi, wtf is with design?"
+    },
+    {
+      "avatar": "../images/img_avatar2.png",
+      "text": "don't worry, will fix it sometimes later"
+    }
+  ]
+}

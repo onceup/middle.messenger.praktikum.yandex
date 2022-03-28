@@ -1,0 +1,8 @@
+.warning {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}

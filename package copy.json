@@ -2,19 +2,18 @@
   "name": "chat-project",
   "version": "1.0.0",
   "description": "messenger",
+  "main": "index.js",
   "dependencies": {
-    "postcss": "^8.4.12",
-    "express": "^4.17.3"
+    "postcss": "^8.4.12"
   },
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "express": "^4.17.3",
     "parcel": "^2.4.0",
     "postcss-nested": "^5.0.6"
   },
   "scripts": {
-    "dev": "parcel src/pages/index.hbs --no-cache",
-    "start": "node index.js",
-    "build": "parcel build src/pages/index.hbs --no-cache"
+    "start": "parcel src/pages/index.hbs --no-cache"
   },
   "author": "",
   "license": "ISC"

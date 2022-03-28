@@ -1,14 +1,18 @@
 ---
-title: Welcome 
-stylesheets:
-  - ./index.css
-  - ./link.css
-  - ./main.css
+title: Welcome to YaMsg
+css:
+  - main.css
+  - form.css
 ---
-{{!< base}}
+
+{{!< main}}
 
 <main>
-    <h1 class="h1h1">{{title}}</h1>
-    {{> link href="./signIn.hbs" linkText="sign in"}}
-    {{> link href="./settings.hbs" linkText="settings"}}
+  <h2>{{title}}</h2>
+  <a href="./signIn.hbs" class="block-list">sign in</a>
+  <a href="./signUp.hbs" class="block-list">sign up</a>
+  <a href="./pageNotFound.hbs" class="block-list">404</a>
+  <a href="./serverError.hbs" class="block-list">500</a>
+  <a href="./dialogues.hbs" class="block-list">dialogues</a>
+  <a href="./settings.hbs" class="block-list">settings</a>
 </main>
