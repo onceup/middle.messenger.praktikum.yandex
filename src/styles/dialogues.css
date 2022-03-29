@@ -1,3 +1,5 @@
+@import url(./variables/colors.css);
+
 .dialogues {
   display: flex;
   height: 100vh;
@@ -6,7 +8,7 @@
     width: 30%;
     display: flex;
     flex-direction: column;
-    background: #FBFBFB;
+    background: var(--color-grey);
     padding: 20px;
   }
 

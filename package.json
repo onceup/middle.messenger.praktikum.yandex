@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "messenger",
   "dependencies": {
-    "postcss": "^8.4.12",
-    "express": "^4.17.3"
+    "express": "4.17.3"
   },
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "parcel": "^2.4.0",
-    "postcss-nested": "^5.0.6"
+    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "parcel": "2.4.0",
+    "postcss-nested": "5.0.6",
+    "postcss": "8.4.12"
   },
   "scripts": {
     "dev": "parcel src/pages/index.hbs --no-cache",
