@@ -1,0 +1,29 @@
+---
+title: Messages
+css:
+  - main.css
+  - dialogues.css
+  - message.css
+  - form.css
+---
+
+{{!< main}}
+
+<main>
+  <div class="dialogues">
+    <div class="dialogues__list">
+    <h2>Dialogues</h2>
+      {{#each data.dialogues}}
+        {{> message text=this.text}}
+      {{/each}}
+    </div>
+    <div class="dialogues__chat">
+      {{#each data.messages}}
+        {{> message text=this.text}}
+      {{/each}}
+      <form>
+        <input id="messsage-text" class="form__input" placeholder="Message" />
+      </form>
+    </div>
+  </div>
+</main>

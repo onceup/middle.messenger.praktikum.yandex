@@ -1,0 +1,22 @@
+---
+title: Sign in
+css:
+  - form.css
+  - button.css
+  - link.css
+  - main.css
+---
+
+{{!< main}}
+
+<main>
+  <form class="form">
+    <h2 class="form__title">{{title}}</h2>
+    <input id="login" class="form__input" placeholder="login" />
+    <input id="password" class="form__input" placeholder="password" />
+    <div class="form__button">
+      {{> button type="submit" title="Sign in" href="./main.hbs"}}
+    </div>
+    {{> link href="./signUp.hbs" linkText="Create account"}}
+  </form>
+</main>
