@@ -1,4 +1,4 @@
-@import url(./variables/colors.css);
+@import "url(./variables/colors.css)";
 
 .button {
   width: 280px;
