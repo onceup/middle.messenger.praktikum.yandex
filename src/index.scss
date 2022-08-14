@@ -1,0 +1,29 @@
+:root {
+  --color-blue: #3369f3;
+  --color-white: #fff;
+  --color-grey: #fbfbfb;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.block-list {
+  display: block;
+  margin: 20px;
+}
+
+.button {
+  width: 280px;
+  height: 37px;
+  background: var(--color-blue);
+  border-radius: 8px;
+  border-style: none;
+
+  &__text {
+    color: var(--color-white);
+  }
+}

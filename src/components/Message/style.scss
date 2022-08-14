@@ -1,0 +1,10 @@
+.message {
+  display: flex;
+  align-items: baseline;
+
+  &__avatar {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+
+}
