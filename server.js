@@ -1,16 +1,14 @@
-import express from 'express';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
+/* eslint-disable @typescript-eslint/no-var-requires */
+const express = require('express');
+const path = require('path');
 
 const PORT = process.env.port || 3000;
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 const app = express();
 
-app.use(express.static(join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('/*', (_req, res) => {
-  res.sendFile(join(__dirname, 'dist/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 app.listen(PORT, () => console.log(`Server has started on http://localhost:${PORT}`));

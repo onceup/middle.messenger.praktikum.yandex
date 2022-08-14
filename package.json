@@ -2,7 +2,6 @@
   "name": "chat-project",
   "version": "1.0.0",
   "description": "messenger",
-  "type": "module",
   "dependencies": {
     "express": "4.17.3",
     "handlebars": "^4.7.7",
