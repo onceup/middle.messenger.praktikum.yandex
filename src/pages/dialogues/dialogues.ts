@@ -1,5 +1,5 @@
 import FormInput from '../../components/Forms/Input/FormInput';
-import Block from '../../core/block';
+import Block from '../../core/Block';
 import Message from '../../components/Message';
 
 import tmpl from './tmpl';
