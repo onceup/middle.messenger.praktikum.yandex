@@ -1,6 +1,12 @@
 ### Description
 
-Messenger
+Messenger written in JavaScript
+
+Build tool - Parcel
+Templator - Handlebars
+CSS preprocessor - SCSS
+
+Messenger implemented by EventBus and Component approach with form validation.
 
 ### Project preview on Netlify
 
