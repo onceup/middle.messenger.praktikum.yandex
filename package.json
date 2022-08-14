@@ -2,19 +2,37 @@
   "name": "chat-project",
   "version": "1.0.0",
   "description": "messenger",
+  "type": "module",
   "dependencies": {
-    "postcss": "^8.4.12",
-    "express": "^4.17.3"
+    "express": "4.17.3",
+    "handlebars": "^4.7.7",
+    "url": "^0.11.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "parcel": "^2.4.0",
-    "postcss-nested": "^5.0.6"
+    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "@parcel/transformer-less": "^2.6.2",
+    "@parcel/transformer-sass": "^2.6.2",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "eslint": "^8.21.0",
+    "parcel": "2.6.2",
+    "parcel-reporter-static-files-copy": "^1.4.0",
+    "postcss": "8.4.12",
+    "postcss-nested": "5.0.6",
+    "stylelint": "^14.9.1",
+    "stylelint-config-standard": "^27.0.0",
+    "stylelint-scss": "^4.3.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
   },
   "scripts": {
-    "dev": "parcel src/pages/index.hbs --no-cache",
-    "start": "node index.js",
-    "build": "parcel build src/pages/index.hbs --no-cache"
+    "dev": "parcel src/index.html --open --no-cache",
+    "lint": "eslint ./src",
+    "lint:style": "stylelint \"src/**.scss\"",
+    "start": "node server.js",
+    "build": "parcel build src/index.html --no-cache"
   },
   "author": "",
   "license": "ISC"
