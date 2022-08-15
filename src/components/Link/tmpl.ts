@@ -1,2 +1,2 @@
-const tmpl = `<a href={{url}} class='link'>{{linkText}}</a>`;
+const tmpl = `<a href="{{url}}" class='link'>{{linkText}}</a>`;
 export default tmpl;

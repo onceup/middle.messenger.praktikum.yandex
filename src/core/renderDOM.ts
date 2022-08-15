@@ -8,7 +8,6 @@ export default function renderDOM(
 	if (root) {
 		root.innerHTML = '';
 		root.appendChild(component.getContent());
-		component.dispatchComponentDidMount();
 		return root;
 	}
 }
