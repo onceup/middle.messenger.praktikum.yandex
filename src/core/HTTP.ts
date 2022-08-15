@@ -1,95 +1,88 @@
 enum METHODS {
-  GET = "GET",
-  POST = "POST",
-  PUT = "PUT",
-  DELETE = "DELETE",
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  PATCH = 'PATCH',
+  DELETE = 'DELETE',
 }
 
-type TOptions = {
-  [index: string]: string | number | undefined;
-  timeout?: number;
+type RequestData = Record<string, string | number>;
+
+type RequestOptions = {
+  method?: METHODS
+  headers?: Record<string, string>
+  timeout?: number
+  data?: unknown
 };
 
-function queryStringify(data: { [index: string]: string }) {
-  if (typeof data !== "object") {
-    throw new Error("Data must be object");
-  }
-
-  const keys = Object.keys(data);
-  return keys.reduce((result, key, index) => {
-    return `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`;
-  }, "?");
+function queryStringify(data: RequestData) {
+  if (!data) return '';
+  return Object.entries(data).reduce((acc, [key, value], index, arr) => {
+    return `${acc}${key}=${value}${index < arr.length - 1 ? '&' : ''}`;
+  }, '?');
 }
 
-export class HTTPTransport {
-  get = (url: string, options: TOptions = {}) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.GET },
-      options.timeout
-    );
+class HTTPTransport {
+  public get = (url: string, options = {}) => {
+    return this.request(url, { ...options, method: METHODS.GET });
   };
 
-  post = (url: string, options: TOptions = {}) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.POST },
-      options.timeout
-    );
+  public post = (url: string, options = {}) => {
+    return this.request(url, { ...options, method: METHODS.POST });
   };
 
-  put = (url: string, options: TOptions = {}) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.PUT },
-      options.timeout
-    );
+  public put = (url: string, options = {}) => {
+    return this.request(url, { ...options, method: METHODS.PUT });
   };
 
-  delete = (url: string, options: TOptions = {}) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.DELETE },
-      options.timeout
-    );
+  public patch = (url: string, options = {}) => {
+    return this.request(url, { ...options, method: METHODS.PATCH });
   };
 
-  request = (url: string, options: TOptions = {}, timeout = 5000) => {
-    const { headers = {}, method, data } = options;
+  public delete = (url: string, options = {}) => {
+    return this.request(url, { ...options, method: METHODS.DELETE });
+  };
 
-    return new Promise(function (resolve, reject) {
-      if (!method) {
-        reject("No method");
-        return;
-      }
+  request = (url: string, options: RequestOptions) => {
+    const {
+      method = METHODS.GET,
+      headers = {},
+      data,
+      timeout = 5000,
+    } = options;
 
+    // Если метод GET и передана data, трансформировать data в query запрос
+    const query = method === METHODS.GET ? queryStringify(data as RequestData) : '';
+
+    return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      const isGet = method === METHODS.GET;
 
-      xhr.open(
-        method as METHODS,
-        isGet && !!data ? `${url}${queryStringify(data)}` : url
-      );
+      xhr.open(method, url + query);
 
-      Object.keys(headers).forEach((key) => {
-        xhr.setRequestHeader(key, headers[key]);
+      Object.entries(headers).forEach(([key, value]) => {
+        xhr.setRequestHeader(key, value);
       });
 
-      xhr.onload = function () {
-        resolve(xhr);
+      xhr.onload = () => {
+        if (xhr.status >= 300) {
+          reject(xhr);
+        } else {
+          resolve(xhr);
+        }
       };
 
       xhr.onabort = reject;
       xhr.onerror = reject;
-
       xhr.timeout = timeout;
       xhr.ontimeout = reject;
 
-      if (isGet || !data) {
+      if (method === METHODS.GET || !data) {
         xhr.send();
       } else {
-        xhr.send(data);
+        xhr.send(JSON.stringify(data));
       }
     });
   };
 }
+
+export default HTTPTransport;

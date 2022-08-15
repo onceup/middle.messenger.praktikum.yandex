@@ -1,10 +1,9 @@
 import { Callback } from './types';
 
 export default class EventBus {
-	readonly listeners: Record<string, Array<() => void>>;
+	readonly listeners: Record<string, Array<(args: any) => void>>;
 
 	constructor() {
-		//список с событиями
 		this.listeners = {};
 	}
 
@@ -12,7 +11,6 @@ export default class EventBus {
 		if (!this.listeners[event]) {
 			this.listeners[event] = [];
 		}
-		//добавляем новый колбэк
 		this.listeners[event].push(callback);
 	}
 
@@ -20,19 +18,19 @@ export default class EventBus {
 		if (!this.listeners[event]) {
 			throw new Error(`Нет события: ${event}`);
 		}
-		//отписываемся от события
 		this.listeners[event] = this.listeners[event].filter(
 			(listener) => listener !== callback
 		);
 	}
 
-	public emit(event: string, ...args: unknown[]) {
+	public emit(event: string, ...args: any) {
 		if (!this.listeners[event]) {
 			throw new Error(`Нет события: ${event}`);
 		}
 
 		this.listeners[event].forEach((listener) => {
-			//вызываем событие с передачей аргументов
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore: Unreachable code error
 			listener(...args);
 		});
 	}

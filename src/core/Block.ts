@@ -74,13 +74,13 @@ export default class Block {
 
   private _makePropsProxy(props: PropsAndChilds) {
     return new Proxy(props, {
-      get(target, prop) {
+      get(target, prop: string) {
         const value = target[prop];
 
         return typeof value === 'function' ? value.bind(target) : value;
       },
 
-      set(target: PropsAndChilds, prop, value) {
+      set(target: PropsAndChilds, prop: string, value) {
         target[prop] = value;
 
         this.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
@@ -153,6 +153,8 @@ export default class Block {
     if (!events) return;
 
     Object.keys(events).forEach((event) =>
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore: Unreachable code error
       this._element?.addEventListener(event, events[event])
     );
   }
@@ -191,6 +193,7 @@ export default class Block {
   }
 
   getContent(): HTMLElement {
+    this.dispatchComponentDidMount();
     return <HTMLElement>this.element;
   }
 
