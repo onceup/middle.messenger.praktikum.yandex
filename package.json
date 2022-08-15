@@ -30,7 +30,7 @@
     "dev": "parcel src/index.html --open --no-cache",
     "lint": "eslint ./src",
     "lint:style": "stylelint \"src/**.scss\"",
-    "start": "node server.js",
+    "start": "npm run build && node server.js",
     "build": "parcel build src/index.html --no-cache"
   },
   "author": "",
