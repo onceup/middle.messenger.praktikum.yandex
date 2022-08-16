@@ -51,7 +51,6 @@ class HTTPTransport {
       timeout = 5000,
     } = options;
 
-    // Если метод GET и передана data, трансформировать data в query запрос
     const query = method === METHODS.GET ? queryStringify(data as RequestData) : '';
 
     return new Promise((resolve, reject) => {
